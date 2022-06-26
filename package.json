@@ -1,0 +1,32 @@
+{
+  "name": "chatlog",
+  "version": "1.0.0",
+  "description": "a chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Korota-21/chatlog.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Marwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Korota-21/chatlog/issues"
+  },
+  "homepage": "https://github.com/Korota-21/chatlog#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
