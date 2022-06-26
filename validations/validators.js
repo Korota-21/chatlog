@@ -9,3 +9,7 @@ exports.hasPassword = body("password").exists()
 
 exports.hasName = body("name").isLength({ min: 5 })
     .withMessage("name is required. Min length 5 characters.");
+
+
+exports.hasMessage = body("message").notEmpty()
+    .withMessage("message is required.");

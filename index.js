@@ -11,6 +11,7 @@ const errorHandler = require('./middlewares/errorHandler')
 
 const authRoutes = require("./routes/auth.routes");
 const chatRoutes = require("./routes/chat.routes");
+const messageRoutes = require("./routes/message.routes");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', passportJWT.authenticate(), chatRoutes);
+app.use('/api/message', passportJWT.authenticate(), messageRoutes);
 app.use(errorHandler)
 
 const port = process.env.PORT || 8000;
