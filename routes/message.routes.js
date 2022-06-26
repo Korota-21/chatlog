@@ -8,6 +8,6 @@ router.get("/chat/:chat", messageController.index);
 router.get("/:id", messageController.show);
 router.post("/", hasMessage, messageController.store);
 
-// router.patch("/:id", messageController.update);
+router.patch("/:id", hasMessage, messageController.update);
 router.delete("/:id", messageController.delete);
 module.exports = router;

@@ -70,36 +70,24 @@ exports.store = async(req, res, next) => {
     }
 };
 
-// exports.update = async(req, res, next) => {
-//     try {
-//         validationHandler(req);
-//         let chat = await Chat.findById(req.params.id);
-//         // check if auth user is auther
-//         if (!chat || !chat.users.includes(req.user.id)) {
-//             const error = new Error("Wrong request")
-//             error.statusCode = 400;
-//             throw error;
-//         }
-//         if (req.body.method === "add") {
-//             chat.users.push(req.body.user);
-//             chat.users = chat.users.filter((c, index) => chat.users.indexOf(c) === index);
+exports.update = async(req, res, next) => {
+    try {
+        validationHandler(req);
+        let message = await Message.findOne({ _id: req.params.id, user: req.user });
+        if (!message) {
+            const error = new Error("message not found")
+            error.statusCode = 400;
+            throw error;
+        }
 
-//         } else if (req.body.method === "delete") {
-//             chat.users = chat.users.filter((user) =>
-//                 user != req.body.user
-//             );
-//         }
-//         if (chat.users.length == 0) {
-//             //destroy chat
-//             res.send({ message: "this is the last user in this chat if you wanna delete it use delete method" })
-//         } else {
-//             chat = await chat.save()
-//             res.send(chat);
-//         }
-//     } catch (err) {
-//         next(err);
-//     }
-// };
+        message.message = req.body.message;
+        message = await message.save()
+        res.send(message);
+
+    } catch (err) {
+        next(err);
+    }
+};
 exports.delete = async(req, res, next) => {
     try {
         let message = await Message.findById(req.params.id);
