@@ -3,7 +3,13 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { default: mongoose } = require('mongoose');
+
 const config = require('./config');
+
+const passportJWT = require("./middlewares/passportJWT")()
+const errorHandler = require('./middlewares/errorHandler')
+
+const authRoutes = require("./routes/auth.route");
 
 const app = express();
 
@@ -13,8 +19,12 @@ app.use(cors());
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoURI, { useNewUrlParser: true })
 
+app.use(passportJWT.initialize())
+
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use('/api/auth', authRoutes);
+app.use(errorHandler)
 
 const port = process.env.PORT || 8000;
 
