@@ -9,7 +9,8 @@ const config = require('./config');
 const passportJWT = require("./middlewares/passportJWT")()
 const errorHandler = require('./middlewares/errorHandler')
 
-const authRoutes = require("./routes/auth.route");
+const authRoutes = require("./routes/auth.routes");
+const chatRoutes = require("./routes/chat.routes");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(passportJWT.initialize())
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/chat', passportJWT.authenticate(), chatRoutes);
 app.use(errorHandler)
 
 const port = process.env.PORT || 8000;
