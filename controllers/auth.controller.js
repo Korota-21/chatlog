@@ -10,7 +10,7 @@ exports.login = async(req, res, next) => {
         const email = req.body.email;
         const password = req.body.password;
 
-        const user = await User.findOne({ email }).select("+password")
+        let user = await User.findOne({ email }).select("+password")
         if (!user) {
             const error = new Error("Wrong Credentials");
             error.statusCode = 401;
@@ -24,6 +24,8 @@ exports.login = async(req, res, next) => {
             throw error
         }
         const token = jwt.encode({ id: user.id }, config.jwtSecret)
+        user = await User.findOne({ email })
+
         return res.send({ user, token })
     } catch (err) {
         next(err)
@@ -46,6 +48,8 @@ exports.register = async(req, res, next) => {
         user = await user.save();
 
         const token = jwt.encode({ id: user.id }, config.jwtSecret)
+        user = await User.findOne({ email })
+
         return res.send({ user, token })
     } catch (err) {
         next(err)
