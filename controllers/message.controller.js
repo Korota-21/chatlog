@@ -81,6 +81,7 @@ exports.update = async(req, res, next) => {
         }
 
         message.message = req.body.message;
+        message.updatedAt = Date.now();
         message = await message.save()
         res.send(message);
 
