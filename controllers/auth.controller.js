@@ -12,7 +12,7 @@ exports.login = async(req, res, next) => {
 
         let user = await User.findOne({ email }).select("+password")
         if (!user) {
-            const error = new Error("Wrong Credentials");
+            const error = new Error("Email not found");
             error.statusCode = 401;
             throw error
         }
