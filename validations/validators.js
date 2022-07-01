@@ -1,6 +1,5 @@
 const { body } = require('express-validator');
 
-exports.isArray = body("users").isArray().withMessage("should be an array");
 exports.isEmail = body("email").isEmail()
     .withMessage("Email field must contain a correct email.");
 
