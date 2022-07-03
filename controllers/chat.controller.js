@@ -1,7 +1,7 @@
 const Chat = require('../models/chat.model')
-
+const Message = require('../models/message.model');
 const validationHandler = require("../validations/validationHandler")
-
+const User = require('../models/user.model')
 
 exports.index = async(req, res, next) => {
     try {
@@ -30,11 +30,19 @@ exports.store = async(req, res, next) => {
     try {
         validationHandler(req);
         let chat = new Chat();
-
-        chat.users.push(req.body.user)
-
+        let user = await User.findOne({ email: req.body.email })
+        if (!user) {
+            const error = new Error("User not found")
+            error.statusCode = 400;
+            throw error;
+        }
+        if (req.user.email === user.email) {
+            const error = new Error("You cannot add yourself")
+            error.statusCode = 400;
+            throw error;
+        }
+        chat.users.push(user._id);
         chat.users.push(req.user._id)
-        chat.users = chat.users.filter((c, index) => chat.users.indexOf(c) === index);
 
         chat = await chat.save()
         res.send(chat);
@@ -53,6 +61,8 @@ exports.delete = async(req, res, next) => {
             error.statusCode = 400;
             throw error;
         }
+
+        await Message.deleteMany({ chat: chat });
         await chat.delete()
         res.send({ message: "success" });
     } catch (err) {
