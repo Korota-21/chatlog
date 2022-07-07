@@ -16,7 +16,7 @@ exports.index = async(req, res, next) => {
             throw error;
         }
 
-        const messages = await Message.find({ chat: req.params.chat }).skip((page - 1) * pagination).limit(pagination).sort('createdAt');
+        const messages = await Message.find({ chat: req.params.chat }).skip((page - 1) * pagination).limit(pagination).populate("user").sort('createdAt');
 
         res.send(messages);
     } catch (err) {
