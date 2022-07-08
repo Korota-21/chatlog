@@ -10,7 +10,6 @@ function SocketRouter(socket, io) {
         let p = CurrentChat
         socket.join(newChatId, () => console.log(`Socket ${socket.user.name} joined room ${newChatId} and left room ${p}`));
         CurrentChat = newChatId;
-        console.log(socket.rooms);
     });
 
     socket.on('adduser', (user) => {
@@ -27,7 +26,6 @@ function SocketRouter(socket, io) {
     });
     socket.on("newMessage", (message) => {
         socket.broadcast.emit('newMessage', message);
-        console.log("new message received");
     })
     socket.on("getAllChat", chat => {
 
