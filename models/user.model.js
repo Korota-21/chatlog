@@ -6,6 +6,7 @@ const UserSchema = new Schema({
     email: { type: String, required: true },
     name: { type: String, required: true },
     password: { type: String, required: true, select: false },
+    code: { type: String, default:null },
 })
 UserSchema.methods.encryptPassword = async password => {
     const salt = await bcrypt.genSalt(5);

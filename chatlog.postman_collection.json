@@ -1,0 +1,510 @@
+{
+    "info": {
+        "_postman_id": "ff649e59-7971-4c66-b78a-33e02144eab5",
+        "name": "chatlog",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "10394650"
+    },
+    "item": [{
+            "name": "create chat",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYyYjg3MDkwNTBkMjM0ODJmYTExZTA3MiJ9.e371x12M-6LlZhrNvtjyoALFHl0EdMWcZoN5580fFak",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"users\":[\"62b8733fa85a7c2692781d44\"]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/chat",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "index chat",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro2}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat"
+                    ],
+                    "query": [{
+                            "key": "pagination",
+                            "value": "5",
+                            "disabled": true
+                        },
+                        {
+                            "key": "page",
+                            "value": "3",
+                            "disabled": true
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "show chat",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat/62c0826a86bc8b9812fc46e7",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat",
+                        "62c0826a86bc8b9812fc46e7"
+                    ],
+                    "query": [{
+                        "key": "id",
+                        "value": "62ad722c0fcde9ad2b72b9f5",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "delete chat",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/chat/62b8801734876c3cba64144a",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "chat",
+                        "62b8801734876c3cba64144a"
+                    ],
+                    "query": [{
+                        "key": "id",
+                        "value": "62ad722c0fcde9ad2b72b9f5",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "create message",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro2}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"message\":\"a message\",\r\n    \"chat\":\"62c084bb86bc8b9812fc47d1\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/message",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "message"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "show message",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/message/62b89fe9c273cef383bf6042",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "message",
+                        "62b89fe9c273cef383bf6042"
+                    ],
+                    "query": [{
+                        "key": "id",
+                        "value": "62ad722c0fcde9ad2b72b9f5",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "index message",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro2}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/message/chat/62c11de444c90a8033a11ab8",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "message",
+                        "chat",
+                        "62c11de444c90a8033a11ab8"
+                    ],
+                    "query": [{
+                        "key": "page",
+                        "value": "3",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "update message",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro2}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"message\":\"Updated message\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/message/62b8ac55125b5c5403125086",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "message",
+                        "62b8ac55125b5c5403125086"
+                    ],
+                    "query": [{
+                        "key": "id",
+                        "value": "62ad722c0fcde9ad2b72b9f5",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "delete message",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro2}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/message/62b89fe9c273cef383bf6042",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "message",
+                        "62b89fe9c273cef383bf6042"
+                    ],
+                    "query": [{
+                        "key": "id",
+                        "value": "62ad722c0fcde9ad2b72b9f5",
+                        "disabled": true
+                    }]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "register",
+            "request": {
+                "method": "POST",
+                "header": [{
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                }],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"email\": \"koroko@gmail.com\",\r\n    \"password\": \"koroko123\",\r\n    \"name\": \"Marwa\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/auth/register",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "auth",
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"email\": \"koroko2@gmail.com\",\r\n    \"password\": \"koroko123\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/auth/login",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "auth",
+                        "login"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "me",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [{
+                            "key": "token",
+                            "value": "{{koro}}",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{admin}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/auth/me",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "api",
+                        "auth",
+                        "me"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "variable": [{
+            "key": "koro",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYyYjg3MzNmYTg1YTdjMjY5Mjc4MWQ0NCJ9.Gnimo_HZwkWeGpbmu-0bIgPhJVEvFSHhj2x97vzQpzQ"
+        },
+        {
+            "key": "koro2",
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYyYjg3MDkwNTBkMjM0ODJmYTExZTA3MiJ9.e371x12M-6LlZhrNvtjyoALFHl0EdMWcZoN5580fFak"
+        }
+    ]
+}
